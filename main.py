@@ -57,6 +57,7 @@ def main():
     firefoxOptions = Options()   
     firefoxOptions.add_argument('--disable-gpu')
     firefoxOptions.add_argument('--no-sandbox')
+    firefoxOptions.set_preference('permissions.default.image',2)
     parser = ArgumentParser(
         description="Less is More."
     )
