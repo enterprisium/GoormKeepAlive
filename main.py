@@ -1,22 +1,21 @@
 from time import sleep
 from argparse import ArgumentParser
-from selenium.webdriver import Chrome
+from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.firefox.options import Options
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-def searchTerminalUrl(broswer:Chrome):
+def searchTerminalUrl(broswer:Firefox):
     for linktag in broswer.find_elements(By.TAG_NAME,"a"):
         linkhref = linktag.get_attribute("href")
-        if (linkhref):
+        if linkhref:
             if "ide-run.goorm.io/terminal" in linkhref:
                 return linkhref
     return 1
 
-def keepAlive(broswer: Chrome, user: str, passwd: str):
+def keepAlive(broswer: Firefox, user: str, passwd: str):
     print("Loading Login Page...", end='', flush=True)
     login_url = "https://accounts.goorm.io/login?return_url=aHR0cHM6Ly9pZGUuZ29vcm0uaW8vbXkvZGFzaGJvYXJk&keep_login=true"
     broswer.get(login_url)
@@ -55,23 +54,23 @@ def keepAlive(broswer: Chrome, user: str, passwd: str):
     return 0
 
 def main():
-    chromeOptions = Options()   
-    chromeOptions.add_argument('--disable-gpu')
-    chromeOptions.add_argument('--no-sandbox')
+    firefoxOptions = Options()   
+    firefoxOptions.add_argument('--disable-gpu')
+    firefoxOptions.add_argument('--no-sandbox')
     parser = ArgumentParser(
         description="Less is More."
     )
     parser.add_argument("-U","--user",help="Your Goorm Account Email",required=True,type=str)
     parser.add_argument("-P","--passwd",help="Your Goorm Account Password",required=True,type=str)
-    parser.add_argument("--noheadless",help="Run Chronium Without Headless Mode",required=False,action="store_true")
-    parser.add_argument("-DRV","--driver",help="Chromedriver Path(Default in $PATH)",required=False,type=str)
+    parser.add_argument("--noheadless",help="Run Firefox Without Headless Mode",required=False,action="store_true")
+    parser.add_argument("-DRV","--driver",help="Geckodriver Path(Default in $PATH)",required=False,type=str)
     args = parser.parse_args()
     if not args.noheadless:
-        chromeOptions.add_argument('--headless')
+        firefoxOptions.add_argument('--headless')
     if args.driver:
-        broswer = Chrome(service=Service(args.driver),options=chromeOptions)
+        broswer = Firefox(executable_path=args.driver,options=firefoxOptions)
     else:
-        broswer = Chrome(options=chromeOptions)
+        broswer = Firefox(options=firefoxOptions)
     keepAlive(broswer, args.user, args.passwd)
 
 if __name__ == "__main__":
