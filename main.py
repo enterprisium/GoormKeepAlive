@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 def searchTerminalUrl(broswer:Firefox):
     for linktag in broswer.find_elements(By.TAG_NAME,"a"):
         linkhref = linktag.get_attribute("href")
-        if linkhref:
+        if linkhref != None:
             if "ide-run.goorm.io/terminal" in linkhref:
                 return linkhref
     return 1
