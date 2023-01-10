@@ -11,7 +11,7 @@ def searchTerminalUrl(broswer:Firefox):
     for linktag in broswer.find_elements(By.TAG_NAME,"a"):
         linkhref = linktag.get_attribute("href")
         if linkhref != None:
-            if "ide-run.goorm.io/terminal" in linkhref:
+            if "/terminal" in linkhref:
                 return linkhref
     return 1
 
@@ -46,7 +46,13 @@ def keepAlive(broswer: Firefox, user, passwd, terminalUrl = ""):
     broswer.implicitly_wait(30)
     print("\rLogin Successed!", end='', flush=True)
     if terminalUrl == "":
-        terminalUrl = searchTerminalUrl(broswer)
+        sleep(5)
+        while 1:
+            terminalUrl = searchTerminalUrl(broswer)
+            if searchTerminalUrl(broswer) == 1:
+                sleep(0.5)
+            else:
+                break
     print("\rStart KeepAlive Workflow!Enjot it!", end='', flush=True)
     while 1:
         broswer.get(terminalUrl)
