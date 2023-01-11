@@ -2,7 +2,8 @@
 
 clear
 read -p "Your Goorm Account Email: " user  
-read -sp "Your Goorm Account Password:" passwd 
+read -sp "Your Goorm Account Password: " passwd 
+clear
 echo "Install Dependences..."
 sudo apt update > /dev/null 2>&1
 sudo apt install -y firefox firefox-geckodriver python3 python3-pip > /dev/null 2>&1
