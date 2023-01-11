@@ -12,3 +12,5 @@ wget -q -O main.py https://github.com/ShadowObj/GoormKeepAlive/raw/main/main.py
 echo "Begin To Execute Python3 Script..."
 nohup python3 main.py -U $user -P $passwd  > /dev/null &
 echo "Start Keepalive Workflow!Enjoy it!"
+sleep(2)
+clear
