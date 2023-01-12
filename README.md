@@ -5,7 +5,7 @@ Python Script `main.py` Usage:<br/>
 `python3 main.py -U Username -P Password [-C TerminalUrl] [-DRV Geckodriver] [--noheadless]`<br/>
 More Information In `python3 main.py --help`<br/>
 Notice: 
-- **Recommend to run this script followwing `-C TerminalUrl` argument when you run it on Goorm Container**
+- **Recommend to run this script with `-C TerminalUrl` argument when you run it on Goorm Container**
 - Executable File `main` In This Repo Is Packed Of `main.py`
 <br/><br/>
 Bash Script `script.sh` Usage:<br/>
