@@ -50,7 +50,7 @@ def keepAlive(broswer: Firefox, user, passwd, terminalUrl = ""):
         while 1:
             terminalUrl = searchTerminalUrl(broswer)
             if searchTerminalUrl(broswer) == 1:
-                sleep(0.5)
+                sleep(5)
             else:
                 break
     print("\rStart KeepAlive Workflow!Enjot it!", end='', flush=True)
