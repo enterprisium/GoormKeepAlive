@@ -7,6 +7,7 @@ More Information In `python3 main.py --help`<br/>
 Notice: 
 - **Recommend to run this script with `-C TerminalUrl` argument when you run it on Goorm Container**
 - Executable File `main` In This Repo Is Packed Of `main.py`
-<br/><br/>
+
+
 Bash Script `script.sh` Usage:<br/>
 `wget https://github.com/ShadowObj/GoormKeepAlive/raw/main/script.sh;chmod +x script.sh;./script.sh`
