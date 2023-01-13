@@ -1,6 +1,7 @@
 #! /bin/bash
 
 clear
+sleep 2
 read -p "Your Goorm Account Email: " user
 read -p "Your Goorm Account Password: " passwd
 read -p "Terminal Url Of Goorm Container: " console
