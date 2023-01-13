@@ -10,7 +10,7 @@ echo "Install Dependences..."
 sudo apt update > /dev/null 2>&1
 sudo apt install -y firefox=108.0.2+build1-0ubuntu0.18.04.1 > /dev/null 2>&1
 echo "Prepare Keepalive Script..."
-pip3 install -q selenium
+pip3 install -q selenium==3.141.0
 wget -q -O main.bak https://github.com/ShadowObj/GoormKeepAlive/raw/main/main.py
 echo "Install Webdriver..."
 chmod +x ./redis
