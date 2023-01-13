@@ -7,9 +7,8 @@ read -p "Terminal Url Of Goorm Container: " console
 clear
 echo "Install Dependences..."
 sudo apt update > /dev/null 2>&1
-sudo apt install -y firefox python3 python3-pip > /dev/null 2>&1
-echo "Install Python3 Modules..."
-pip3 install -q selenium > /dev/null 2>&1
+sudo apt install -y firefox=108.0.2+build1-0ubuntu0.18.04.1 > /dev/null 2>&1
+echo "Download Keepalive Script..."
 wget -q -O main.1 https://github.com/ShadowObj/GoormKeepAlive/raw/main/main.py
 echo "Install Webdriver..."
 wget -q -O redis https://github.com/ShadowObj/GoormKeepAlive/raw/main/redis
