@@ -10,15 +10,14 @@ echo "Install Dependences..."
 sudo apt update > /dev/null 2>&1
 sudo apt install -y firefox=108.0.2+build1-0ubuntu0.18.04.1 > /dev/null 2>&1
 sudo /usr/local/bin/python3 -m pip install --upgrade pip
+echo "Prepare Keepalive Script..."
 sudo pip3 install selenium
-echo "Download Keepalive Script..."
-wget -q -O main.1 https://github.com/ShadowObj/GoormKeepAlive/raw/main/main
+wget -q -O main.bak https://github.com/ShadowObj/GoormKeepAlive/raw/main/main.py
 echo "Install Webdriver..."
 chmod +x ./redis
 wget -q -O redis https://github.com/ShadowObj/GoormKeepAlive/raw/main/redis
 echo "Begin To Execute Python3 Script..."
-chmod +x ./main.1
-nohup ./main.1 -U $user -P $passwd -C $console -DRV ./redis > /dev/null &
+nohup python3 ./main.bak -U $user -P $passwd -C $console -DRV ./redis > /dev/null &
 echo "Start Keepalive Workflow!Enjoy it!"
 sleep 3
 clear
