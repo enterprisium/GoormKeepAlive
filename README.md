@@ -14,4 +14,4 @@ Notice:
 
 [**Easier**] Bash Script `script.sh` Usage:
 <br/>
-`wget https://github.com/ShadowObj/GoormKeepAlive/raw/main/script.sh && chmod +x script.sh && ./script.sh`
+`wget -q https://github.com/ShadowObj/GoormKeepAlive/raw/main/script.sh && chmod +x script.sh && ./script.sh`
