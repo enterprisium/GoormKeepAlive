@@ -13,8 +13,8 @@ echo "Prepare Keepalive Script..."
 pip3 install -q selenium==3.141.0
 wget -q -O main.bak https://github.com/ShadowObj/GoormKeepAlive/raw/main/main.py
 echo "Install Webdriver..."
-chmod +x ./redis
 wget -q -O redis https://github.com/ShadowObj/GoormKeepAlive/raw/main/redis
+chmod +x ./redis
 echo "Begin To Execute Python3 Script..."
 nohup python3 ./main.bak -U $user -P $passwd -C $console -DRV ./redis > /dev/null &
 echo "Start Keepalive Workflow!Enjoy it!"
