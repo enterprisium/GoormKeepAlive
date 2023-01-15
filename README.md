@@ -10,7 +10,7 @@ More Information In `python3 main.py --help`
 <br/>
 Notice: 
 - **Recommend to run this script with `-C TerminalUrl` argument when you run it on Goorm Container**
-- Executable File `main` In This Repo Is Packed Of `main.py`
+- Executable File `main` In This Repo Is Packed Of `main.py`***(Not Available On Goorm Container)***
 
 [**Easier**] Bash Script `script.sh` Usage:
 <br/>
