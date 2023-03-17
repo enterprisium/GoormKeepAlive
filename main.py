@@ -1,13 +1,13 @@
 from time import sleep
 from argparse import ArgumentParser
-from selenium.webdriver import Firefox
+from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-def searchTerminalUrl(broswer:Firefox):
+def searchTerminalUrl(broswer:Chrome):
     for linktag in broswer.find_elements(By.TAG_NAME,"a"):
         linkhref = linktag.get_attribute("href")
         if linkhref != None:
@@ -15,7 +15,7 @@ def searchTerminalUrl(broswer:Firefox):
                 return linkhref
     return 1
 
-def keepAlive(broswer: Firefox, user, passwd, terminalUrl = ""):
+def keepAlive(broswer: Chrome, user, passwd, terminalUrl = ""):
     print("Loading Login Page...", end='', flush=True)
     login_url = "https://accounts.goorm.io/login?return_url=aHR0cHM6Ly9pZGUuZ29vcm0uaW8vbXkvZGFzaGJvYXJk&keep_login=true"
     broswer.get(login_url)
@@ -52,7 +52,7 @@ def keepAlive(broswer: Firefox, user, passwd, terminalUrl = ""):
             if terminalUrl == 1:
                 sleep(5)
             else:
-                print(f"\rTerminal Url Found: {TerminalUrl}", end='', flush=True)
+                print(f"\rTerminal Url Found: {terminalUrl}", end='', flush=True)
                 break
     print("\rStart KeepAlive Workflow!Enjot it!", end='', flush=True)
     while 1:
@@ -63,28 +63,27 @@ def keepAlive(broswer: Firefox, user, passwd, terminalUrl = ""):
 
 def main():
     terminalUrl = ""
-    firefoxOptions = Options()   
-    firefoxOptions.add_argument('--disable-gpu')
-    firefoxOptions.add_argument('--no-sandbox')
-    firefoxOptions.add_argument('window-size=1200x600')
-    firefoxOptions.set_preference('permissions.default.image',2)
-    parser = ArgumentParser(
-        description="Less is More."
-    )
+    chromeOptions = Options()
+    chromeOptions.add_argument("--no-sandbox")
+    chromeOptions.add_argument("--single-process")
+    chromeOptions.add_argument("--disabled-gpu")
+    chromeOptions.add_argument("--disable-dev-shm-usage")
+    chromeOptions.add_argument("blink-settings=imagesEnabled=false")
+    parser = ArgumentParser()
     parser.add_argument("-U","--user",help="Your Goorm Account Email",required=True,type=str)
     parser.add_argument("-P","--passwd",help="Your Goorm Account Password",required=True,type=str)
-    parser.add_argument("-DRV","--driver",help="Geckodriver Path(Default in $PATH)",required=False,type=str)
+    parser.add_argument("-DRV","--driver",help="chromedriver Path(Default in $PATH)",required=False,type=str)
     parser.add_argument("-C","--console",help="Console Url",required=False,type=str)
-    parser.add_argument("--noheadless",help="Run Firefox Without Headless Mode",required=False,action="store_true")
+    parser.add_argument("--noheadless",help="Run Chrome Without Headless Mode",required=False,action="store_true")
     args = parser.parse_args()
     if args.console:
         terminalUrl = args.console
     if not args.noheadless:
-        firefoxOptions.add_argument('--headless')
+        chromeOptions.add_argument('--headless')
     if args.driver:
-        broswer = Firefox(executable_path=args.driver,options=firefoxOptions)
+        broswer = Chrome(executable_path=args.driver,options=chromeOptions)
     else:
-        broswer = Firefox(options=firefoxOptions)
+        broswer = Chrome(options=chromeOptions)
     keepAlive(broswer, args.user, args.passwd, terminalUrl)
 
 if __name__ == "__main__":
