@@ -4,7 +4,7 @@
 <br/><br/>
 Python Script `main.py` Usage:
 <br/>
-`python3 main.py -U Username -P Password [-C TerminalUrl] [-DRV Geckodriver] [--noheadless]`
+`python3 main.py -U Username -P Password [-C TerminalUrl] [-DRV Chromedriver] [--noheadless]`
 <br/>
 More Information In `python3 main.py --help`
 <br/>
