@@ -16,7 +16,7 @@ echo "Prepare Keepalive Script..."
 pip3 install -q selenium==3.141.0
 wget -q -O main.py https://github.com/ShadowObj/GoormKeepAlive/raw/main/main.py
 echo "Begin To Execute Python3 Script..."
-nohup python3 ./main.bak -U $user -P $passwd -C $console > /dev/null &
+nohup python3 ./main.py -U $user -P $passwd -C $console > /dev/null &
 echo "Start Keepalive Workflow!Enjoy it!"
 sleep 3
 clear
