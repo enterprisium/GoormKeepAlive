@@ -62,7 +62,6 @@ def keepAlive(broswer: Chrome, user, passwd, terminalUrl = ""):
     return 0
 
 def main():
-    terminalUrl = ""
     chromeOptions = Options()
     chromeOptions.add_argument("--no-sandbox")
     chromeOptions.add_argument("--single-process")
@@ -76,8 +75,7 @@ def main():
     parser.add_argument("-C","--console",help="Console Url",required=False,type=str)
     parser.add_argument("--noheadless",help="Run Chrome Without Headless Mode",required=False,action="store_true")
     args = parser.parse_args()
-    if args.console:
-        terminalUrl = args.console
+    terminalUrl = args.console if args.console else ""
     if not args.noheadless:
         chromeOptions.add_argument('--headless')
     if args.driver:
